@@ -4,7 +4,10 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../JavaWeb.iml" filepath="$PROJECT_DIR$/../JavaWeb.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ssh.iml" filepath="$PROJECT_DIR$/.idea/modules/ssh.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ssh.iml" filepath="$PROJECT_DIR$/.idea/modules/ssh.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ssh_main.iml" filepath="$PROJECT_DIR$/.idea/modules/ssh_main.iml" group="ssh" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ssh_main.iml" filepath="$PROJECT_DIR$/.idea/modules/ssh_main.iml" group="ssh" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ssh_test.iml" filepath="$PROJECT_DIR$/.idea/modules/ssh_test.iml" group="ssh" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ssh_test.iml" filepath="$PROJECT_DIR$/.idea/modules/ssh_test.iml" group="ssh" />
     </modules>
   </component>

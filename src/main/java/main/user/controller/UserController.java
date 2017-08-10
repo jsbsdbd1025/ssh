@@ -18,7 +18,8 @@ public class UserController extends BaseController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/greeting")
+    @RequestMapping(value = "/greeting",method = RequestMethod.GET)
+    @GetMapping
     public UserBean greeting(@RequestParam(value="name", defaultValue="World") String name) {
         return new UserBean(counter.incrementAndGet(),
                 String.format(template, name));

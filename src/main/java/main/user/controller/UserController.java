@@ -7,6 +7,7 @@ import main.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,21 +27,49 @@ public class UserController extends BaseController {
 
     @RequestMapping(value = "/greeting", method = RequestMethod.GET)
     @ResponseBody
-    public main.base.ResponseBody greeting(@RequestParam(value = "name", defaultValue = "World") String name
-            , Map<String,UserBean> map) {
+    public main.base.ResponseBody greeting(Map<String, UserBean> map) {
         main.base.ResponseBody responseBody = new main.base.ResponseBody();
         UserBean user = checkSession();
 
-        if (user == null) {
-            user = new UserBean(counter.incrementAndGet(),
-                    String.format(loginTemplate, name));
+        if (user != null) {
+            map.put("user", user);
         }
-
-        map.put("user", user);
 
         responseBody.setBody(map);
         return responseBody;
     }
 
-    // TODO: 2017/8/11 退出清除缓存
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @ResponseBody
+    public main.base.ResponseBody login(@RequestParam("account") String account, @RequestParam("password") String password
+            , Map<String, UserBean> map) {
+        main.base.ResponseBody responseBody = new main.base.ResponseBody();
+
+        UserBean user = userService.login(account, password);
+
+        if (user == null) {
+            responseBody.setStatus(main.base.ResponseBody.Status.FAIL);
+        } else {
+            map.put("user", user);
+        }
+
+
+        responseBody.setBody(map);
+        return responseBody;
+    }
+
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    @ResponseBody
+    public main.base.ResponseBody logout(SessionStatus status) {
+        main.base.ResponseBody responseBody = new main.base.ResponseBody();
+
+        userService.logout();
+
+        status.setComplete();
+        return responseBody;
+    }
+
+
 }

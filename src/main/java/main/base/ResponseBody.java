@@ -21,9 +21,9 @@ public class ResponseBody {
     private Map body = new HashMap();
 
 
-    public void setStatus(int status) {
-        this.status = status;
-        if (status == Status.FAIL.getValue()) {
+    public void setStatus(Status status) {
+        this.status = status.getValue();
+        if (status == Status.FAIL) {
             msg = "操作失败";
         } else {
             msg = "操作成功";

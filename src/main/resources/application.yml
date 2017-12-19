@@ -1,2 +1,5 @@
 server:
-  port: 8081
+  port: 8082
+
+  deploy:
+      artifact: target/common.jar

@@ -1,13 +1,33 @@
 group 'jiang'
-version '1.0-SNAPSHOT'
+version '1.0'
 
 apply plugin: 'java'
 apply plugin: 'war'
+
+apply plugin: 'org.springframework.boot'
+
+//apply plugin: 'application'
+//mainClassName = 'main.Application'
+
+def appMainClass = 'main.Application'
 
 sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+}
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.6.RELEASE")
+    }
+}
+
+springBoot {
+    mainClass = "main.Application"
 }
 
 dependencies {
